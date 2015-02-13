@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :tickets
+
   def full_name
     if first_name || last_name
       "#{first_name} #{last_name}".squeeze.strip
