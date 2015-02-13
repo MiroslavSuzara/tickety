@@ -1,0 +1,21 @@
+<% if @ticket.errors.any? %>
+  <ul>
+    <% @ticket.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @ticket do |t| %>
+  <div class="form-group">
+    <%= t.label :title %>
+    <%= t.text_field :title, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= t.label :description %>
+    <%= t.text_area :description, class: "form-control" %>
+  </div>
+  <br>
+  <%= t.submit class: "btn btn-primary" %>
+<% end %>

@@ -1,12 +1,14 @@
 class TicketsController < ApplicationController
 
   def index
+    @tickets = Ticket.all
   end
 
   def show
   end
 
   def new
+    @ticket = Ticket.new
   end
 
   def create
