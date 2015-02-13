@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
-
+before_action :find_ticket, 
+                only: [:edit, :update, :destroy]
   def index
     @ticket = Ticket.new
     @tickets = Ticket.all
@@ -31,6 +32,8 @@ class TicketsController < ApplicationController
   end
 
   def destroy
+    @ticket.destroy
+    redirect_to root_path, notice: "Ticket deleted!"
   end
 
   private
@@ -39,5 +42,8 @@ class TicketsController < ApplicationController
     params.require(:ticket).permit(:title, :description)
   end
 
+  def find_ticket
+    @ticket = Ticket.find params[:id]
+  end
 
 end

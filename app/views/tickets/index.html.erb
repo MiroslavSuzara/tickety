@@ -4,5 +4,6 @@
     <% @tickets.each do |t| %>
       <p> <%= t.title %> </p>
       <p><%= t.description %></p>
+      <%= link_to "Delete", ticket_path(t), method: :delete, data:{confirm: "Are you sure you want to delete this request?"}, class: "btn btn-default" %> 
   <hr>
   <% end %>
