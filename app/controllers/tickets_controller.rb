@@ -1,6 +1,8 @@
 class TicketsController < ApplicationController
-before_action :find_ticket, 
-                only: [:edit, :update, :destroy]
+  before_action :find_ticket, 
+                  only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @ticket = Ticket.new
     @tickets = Ticket.all

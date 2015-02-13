@@ -6,6 +6,7 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">Tickety</a>
     </div>
@@ -13,9 +14,20 @@
     <div class="navbar-header">
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/projects">Home</a></li>
-          <li><a href="/projects/new">Create New Ticket</a></li>
+          <li><a href="/tickets">Home</a></li>
+          <li><a href="/tickets/new">Create New Ticket</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+       <div class="pull-right">
+         <% if user_signed_in? %> 
+          <li>
+            <%= "Hello" + " " + current_user.full_name %> 
+            <%= link_to "sign out", destroy_user_session_path, method: :delete, class: "btn btn-default" %></li>
+          <% else %>
+          <li><%= link_to "sign in", new_user_session_path, class: "btn btn-default" %></li>
+          <% end %>
+        </div>
+      </ul>
       </div>
     </div>
   </div>
